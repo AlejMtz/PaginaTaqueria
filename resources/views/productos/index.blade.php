@@ -3,37 +3,28 @@
 
 @section('content')
 
-<script src="{{ asset('js/menuDesplegable.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/menuSecciones.js') }}"></script>
 
 <div class="row">
+    <!-- Botón de la hamburguesa -->
+    <button class="navbar-toggler-sec" type="button" data-toggle="collapse" data-target="#menuPrincipal-sec" aria-controls="menuPrincipal-sec" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">&#9776;</span>
+    </button>
 
-    <div class="col-md-2"> <!-- Reducido el ancho a 2 columnas -->
-        <div class="card menu-card">
-            <div class="card-body">
-                <!-- Añade un botón con el símbolo de las tres líneas (hamburguesa) -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">&#9776;</span>
-                </button>
-
-                <!-- Contenedor del menú que se mostrará u ocultará según el estado del botón -->
-                <div class="collapse" id="menuPrincipal">
-                    <ul class="list-group">
-                    <a href="{{url('homeMenu')}}" class="list-group-item">Inicio</a>
-                        <a href="{{url('homeInsumosCompras')}}" class="list-group-item">Compras</a>
-                        <a href="{{url('homeInventario')}}" class="list-group-item">Inventario</a>
-                        <a href="{{url('homeVentas')}}" class="list-group-item">Ventas</a>
-                        <li class="list-group-item dropdown">
-                            <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Más opciones</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{url('home')}}">Insumos</a>
-                                <a class="dropdown-item" href="{{url('homeProductos')}}">Productos</a>
-                                <a class="dropdown-item" href="{{url('homeCategorias')}}">Categorías</a>
-                                <a class="dropdown-item" href="{{url('homeUnidadMedidas')}}">Unidades de medida</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Menú hamburguesa -->
+    <div class="col-md-auto">
+        <div class="card menu-card-sec" id="menuPrincipal-sec">
+            <a href="javascript:void()" onclick="closeMenu()"></a>
+            <a href="{{ url('homeMenu') }}"><i class="fa fa-home"></i> Inicio</a>
+            <a href="{{ url('homeInsumosCompras') }}"><i class="fa fa-shopping-cart"></i> Compras</a>
+            <a href="{{ url('homeInventario') }}"><i class="fa fa-list-alt"></i> Inventario</a>
+            <a href="{{ url('homeVentas') }}"><i class="fa fa-dollar"></i> Ventas</a>
+            <a href="{{ url('home') }}"><i class="fa fa-archive"></i> Insumos</a>
+            <a href="{{ url('homeProductos') }}"><i class="fa fa-cubes"></i> Productos</a>
+            <a href="{{ url('homeCategorias') }}"><i class="fa fa-tags"></i> Categorías</a>
+            <a href="{{ url('homeUnidadMedidas') }}"><i class="fa fa-balance-scale"></i> Unidades de medida</a>
         </div>
     </div>
 
@@ -45,10 +36,7 @@
 </script>
 <script src="{{ asset('js/agregarInsumos.js') }}"></script>
 
-
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-md-10">
 
     <br><br>
     <h3>ADMINISTRA TUS PRODUCTOS</h3>

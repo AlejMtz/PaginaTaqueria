@@ -49,8 +49,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Costo:</label>
-            <input type="number" class="form-control" name="costo" id="costo" aria-describedby="helpId" placeholder="" value="{{$insumosCompras->costo}}"/>
+            <label for="" class="form-label">Costo Unitario:</label>
+            <input type="number" step="0.01" class="form-control" name="costo" id="costo" aria-describedby="helpId" placeholder="" value="{{$insumosCompras->costo}}"/>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Costo Total:</label>
+            <input type="number" step="0.01" class="form-control" name="costoT" id="costoT" aria-describedby="helpId" placeholder=""/>
         </div>
 
         <div class="mb-3">
@@ -92,3 +97,5 @@
     </div>
   </div>
 </div>
+
+<script src="{{ asset('js/herramientaCalculos.js') }}"></script>

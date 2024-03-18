@@ -33,14 +33,25 @@ class InsumosComprasControlador extends Controller
      */
     public function store(Request $request)
     {
-        $insumosCompras=new InsumosCompras;
-        $insumosCompras->cantidad=$request->input('cantidad');
-        $insumosCompras->costo=$request->input('costo');
-        $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
-        $insumosCompras->ID_UnidadMedida=$request->input('ID_UnidadMedida');
-        $insumosCompras->fecha=$request->input('fecha');
-        $insumosCompras->save();
-        return redirect()->back();
+        $insumosCompras = new InsumosCompras;
+    $insumosCompras->cantidad = $request->input('cantidad');
+    $insumosCompras->ID_Insumo = $request->input('ID_Insumo');
+    $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida');
+    $insumosCompras->fecha = $request->input('fecha');
+    
+    // Verificar si se proporcionó el costo total y la cantidad para calcular el costo unitario
+    if ($request->filled('costoT') && $request->filled('cantidad')) {
+        $costoTotal = $request->input('costoT');
+        $cantidad = $request->input('cantidad');
+        $costoUnitario = $costoTotal / $cantidad;
+        $insumosCompras->costo = $costoUnitario;
+    } else {
+        // Si no se proporcionó el costo total, intenta obtener el costo unitario directamente
+        $insumosCompras->costo = $request->input('costo');
+    }
+
+    $insumosCompras->save();
+    return redirect()->back();
     }
 
     /**
@@ -64,14 +75,25 @@ class InsumosComprasControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        $insumosCompras=InsumosCompras::find($id);
-        $insumosCompras->cantidad=$request->input('cantidad');
-        $insumosCompras->costo=$request->input('costo');
-        $insumosCompras->ID_Insumo=$request->input('ID_Insumo');
-        $insumosCompras->ID_UnidadMedida=$request->input('ID_UnidadMedida');
-        $insumosCompras->fecha=$request->input('fecha');
-        $insumosCompras->update();
-        return redirect()->back();
+        $insumosCompras = InsumosCompras::find($id);
+    $insumosCompras->cantidad = $request->input('cantidad');
+    $insumosCompras->ID_Insumo = $request->input('ID_Insumo');
+    $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida');
+    $insumosCompras->fecha = $request->input('fecha');
+    
+    // Verificar si se proporcionó el costo total y la cantidad para calcular el costo unitario
+    if ($request->filled('costoT') && $request->filled('cantidad')) {
+        $costoTotal = $request->input('costoT');
+        $cantidad = $request->input('cantidad');
+        $costoUnitario = $costoTotal / $cantidad;
+        $insumosCompras->costo = $costoUnitario;
+    } else {
+        // Si no se proporcionó el costo total, intenta obtener el costo unitario directamente
+        $insumosCompras->costo = $request->input('costo');
+    }
+
+    $insumosCompras->update();
+    return redirect()->back();
     }
 
     /**

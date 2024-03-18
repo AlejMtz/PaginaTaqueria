@@ -28,12 +28,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <header>
-        <img src="{{ asset('imagenes/LOGO_TAQ_SINFONDO.png') }}" alt="Logo de Taquería Chester" class="logo">
+        <img src="{{ asset('imagenes/LOGO_TAQ_FONDO.png') }}" alt="Logo de Taquería Chester" class="logo">
         <h1>Taquería Chester</h1>
         <p>¡En precio y calidad somos la mejor opción!</p>
     </header>
 
-    <h3 class="title-menu">SECCIONES MÁS FRECUENTES</h3>
+    <h2 class="title-menu">SECCIONES MÁS FRECUENTES</h2>
 
         @yield('content')
         <!-- Bootstrap JavaScript Libraries -->
