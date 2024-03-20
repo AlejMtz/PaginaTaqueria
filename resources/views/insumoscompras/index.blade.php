@@ -50,7 +50,6 @@
                 <!-- Encabezados de la tabla -->
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">INSUMO</th>
                         <th scope="col">U.MEDIDA</th>
                         <th scope="col">CANTIDAD</th>
@@ -64,13 +63,12 @@
                 <tbody>
                     @foreach($insumosCompras as $insumosCompras)
                     <tr>
-                        <td>{{ $insumosCompras->id }}</td>
                         <td>{{ $insumosCompras->Insumos->nombre }}</td>
                         <td>{{ $insumosCompras->UnidadMedidas->nombre }}</td>
                         <td>{{ $insumosCompras->cantidad }}</td>
                         <td>{{ $insumosCompras->costo }}</td>
                         <td>{{ number_format($insumosCompras->costo * $insumosCompras->cantidad, 2) }}</td>
-                        <td>{{ $insumosCompras->fecha }}</td>
+                        <td>{{ $insumosCompras->Compras->fecha }}</td>
                         <td>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $insumosCompras->id }}">
                                 EDITAR

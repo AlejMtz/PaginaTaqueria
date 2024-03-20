@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>MENÚ DE ADMINSTRACIÓN</title>
+        <title>MENÚ DE EMPLEADO</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -34,14 +34,6 @@
     </header>
 
     <h2 class="title-menu">SECCIONES MÁS FRECUENTES</h2>
-    <br>
-    
-    @if (Auth::check())
-    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Cerrar sesión</button>
-    </form>
-@endif
 
         @yield('content')
         <!-- Bootstrap JavaScript Libraries -->

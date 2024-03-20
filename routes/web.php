@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuControlador;
 use App\Http\Controllers\VentasControlador;
+use App\Http\Controllers\ComprasControlador;
 use App\Http\Controllers\InsumosControlador;
 use App\Http\Controllers\MenuPubControlador;
 use App\Http\Controllers\PublicoControlador;
+use App\Http\Controllers\EmpleadoControlador;
 use App\Http\Controllers\CategoriaControlador;
 use App\Http\Controllers\ProductosControlador;
 use App\Http\Controllers\UbicacionControlador;
@@ -15,6 +17,8 @@ use App\Http\Controllers\InsumosComprasControlador;
 use App\Http\Controllers\MostrarInsumosControlador;
 use App\Http\Controllers\ProductosVentasControlador;
 use App\Http\Controllers\InsumosProductosControlador;
+
+
 
 
 
@@ -54,8 +58,7 @@ Route::resource('homeVentas', VentasControlador::class);
 Route::post('/insumosproductos/store', [InsumosProductosControlador::class, 'store'])->name('insumosproductos.store');
 Route::delete('/insumosproductos/{id}', [InsumosProductosControlador::class, 'destroy'])->name('insumosproductos.destroy');
 Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
-
-
+Route::resource('homeEmpleado', EmpleadoControlador::class);
 
 
 

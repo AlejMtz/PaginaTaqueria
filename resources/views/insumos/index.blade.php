@@ -55,6 +55,7 @@
                             <th scope="col">NOMBRE</th>
                             <th scope="col">DESCRIPCIÓN</th>
                             <th scope="col">UNIDAD DE MEDIDA</th>
+                            <th scope="col">ESTADO</th>
                             <th scope="col">ACCIONES</th>
                         </tr>
                     </thead>
@@ -65,14 +66,16 @@
                             <td> {{$insumos->nombre}} </td>
                             <td> {{$insumos->descripcion}} </td>
                             <td> {{$insumos->unidadMedida->nombre}} </td>
+                            <td>{{$insumos->estado}}</td>
                             <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumos->id}}">
-                                EDITAR
-                            </button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$insumos->id}}">
-                                ELIMINAR   
-                            </button>
-            
+                            @if($insumos->estado != 'Deshabilitado')
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{$insumos->id}}">
+                    EDITAR
+                </button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{$insumos->id}}">
+                    ELIMINAR
+                </button>
+            @endif
                             </td>
                         </tr>
 

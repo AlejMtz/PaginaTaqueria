@@ -6,6 +6,9 @@ use App\Models\Insumos;
 use Illuminate\Http\Request;
 use App\Models\UnidadMedidas;
 use App\Models\InsumosCompras;
+use App\Models\Compras;
+use Carbon\Carbon; // Asegúrate de importar la clase Carbon
+
 
 class InsumosComprasControlador extends Controller
 {
@@ -33,25 +36,33 @@ class InsumosComprasControlador extends Controller
      */
     public function store(Request $request)
     {
-        $insumosCompras = new InsumosCompras;
-    $insumosCompras->cantidad = $request->input('cantidad');
-    $insumosCompras->ID_Insumo = $request->input('ID_Insumo');
-    $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida');
-    $insumosCompras->fecha = $request->input('fecha');
-    
-    // Verificar si se proporcionó el costo total y la cantidad para calcular el costo unitario
-    if ($request->filled('costoT') && $request->filled('cantidad')) {
-        $costoTotal = $request->input('costoT');
-        $cantidad = $request->input('cantidad');
-        $costoUnitario = $costoTotal / $cantidad;
-        $insumosCompras->costo = $costoUnitario;
-    } else {
-        // Si no se proporcionó el costo total, intenta obtener el costo unitario directamente
-        $insumosCompras->costo = $request->input('costo');
-    }
+        $compra = new Compras;
+        $compra->fecha = Carbon::now();
+        $compra->save();
 
-    $insumosCompras->save();
-    return redirect()->back();
+        $insumosCompras = new InsumosCompras;
+        $insumosCompras->cantidad = $request->input('cantidad');
+        $insumosCompras->ID_Insumo = $request->input('ID_Insumo');
+        $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida');
+        $insumosCompras->ID_Compra = $compra->id;
+
+        if ($request->filled('costoT') && $request->filled('cantidad')) {
+            $costoTotal = $request->input('costoT');
+            $cantidad = $request->input('cantidad');
+            $costoUnitario = $costoTotal / $cantidad;
+            $insumosCompras->costo = $costoUnitario;
+        } else {
+            $insumosCompras->costo = $request->input('costo');
+        }
+
+        $insumosCompras->save();
+
+        // Deshabilitar el insumo comprado
+        $insumoComprado = Insumos::find($request->input('ID_Insumo'));
+        $insumoComprado->estado = 'Deshabilitado'; 
+        $insumoComprado->save();
+
+        return redirect()->back();
     }
 
     /**

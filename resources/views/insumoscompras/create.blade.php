@@ -51,11 +51,6 @@
             <label for="" class="form-label">Costo Total:</label>
             <input type="number" step="0.01" class="form-control" name="costoT" id="costoT" aria-describedby="helpId" placeholder=""/>
         </div>
-
-        <div class="mb-3">
-            <label for="" class="form-label">Fecha:</label>
-            <input type="datetime-local" class="form-control" name="fecha" id="fecha" aria-describedby="helpId" placeholder=""/>
-        </div>
         
       </div>
       <div class="modal-footer">
