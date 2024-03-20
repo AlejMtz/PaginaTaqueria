@@ -116,4 +116,13 @@ class InsumosComprasControlador extends Controller
         $insumosCompras->delete();
         return redirect()->back();
     }
+
+    public function habilitarDeshabilitar($id)
+{
+    $insumoCompra = InsumosCompras::find($id);
+    $insumoCompra->Insumos->estado = ($insumoCompra->Insumos->estado == 'Habilitado') ? 'Deshabilitado' : 'Habilitado';
+    $insumoCompra->Insumos->save();
+
+    return redirect()->back();
+}
 }

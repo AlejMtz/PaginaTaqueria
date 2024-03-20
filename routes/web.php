@@ -59,6 +59,8 @@ Route::post('/insumosproductos/store', [InsumosProductosControlador::class, 'sto
 Route::delete('/insumosproductos/{id}', [InsumosProductosControlador::class, 'destroy'])->name('insumosproductos.destroy');
 Route::put('/editarInsumos/{id}', [InsumosProductosControlador::class, 'editarInsumos'])->name('editarInsumos');
 Route::resource('homeEmpleado', EmpleadoControlador::class);
+Route::post('/habilitar-deshabilitar/{id}', [InsumosComprasControlador::class,'habilitarDeshabilitar'])->name('habilitarDeshabilitar');
+
 
 
 

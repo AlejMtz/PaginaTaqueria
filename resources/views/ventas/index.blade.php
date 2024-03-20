@@ -8,12 +8,13 @@
 <script src="{{ asset('js/menuSecciones.js') }}"></script>
 
 <div class="row">
-    <!-- Botón de la hamburguesa -->
+    <!-- Botón de la hamburguesa 
     <button class="navbar-toggler-sec" type="button" data-toggle="collapse" data-target="#menuPrincipal-sec" aria-controls="menuPrincipal-sec" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">&#9776;</span>
     </button>
+    -->
 
-    <!-- Menú hamburguesa -->
+    <!-- Menú hamburguesa 
     <div class="col-md-auto">
         <div class="card menu-card-sec" id="menuPrincipal-sec">
             <a href="javascript:void()" onclick="closeMenu()"></a>
@@ -21,7 +22,7 @@
             <a href="{{ url('homeVentas') }}"><i class="fa fa-dollar"></i> Ventas</a>
         </div>
     </div>
-
+-->
 <h3>BIENVENIDO A LA SECCIÓN DE VENTAS</h3>
 
 

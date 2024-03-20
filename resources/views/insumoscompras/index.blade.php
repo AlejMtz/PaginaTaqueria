@@ -56,7 +56,7 @@
                         <th scope="col">C.UNITARIO</th>
                         <th scope="col">C.TOTAL</th>
                         <th scope="col">FECHA DE COMPRA</th>
-                        <th scope="col">ACCIONES</th>
+                        <!--<th scope="col">ACCIONES</th>-->
                     </tr>
                 </thead>
                 <!-- Cuerpo de la tabla -->
@@ -70,15 +70,45 @@
                         <td>{{ number_format($insumosCompras->costo * $insumosCompras->cantidad, 2) }}</td>
                         <td>{{ $insumosCompras->Compras->fecha }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $insumosCompras->id }}">
+
+           <!--             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#enableDisableModal{{$insumosCompras->id}}">
+                            Habilitar/Deshabilitar
+                        </button>
+                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $insumosCompras->id }}">
                                 EDITAR
                             </button>
-                            <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#delete{{ $insumosCompras->id }}">
+                            
+                             <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#delete{{ $insumosCompras->id }}">
                                 ELIMINAR
                             </button>
+                            -->
                         </td>
                     </tr>
-                    @include('insumoscompras.info')
+                    <!-- Modal para habilitar/deshabilitar -->
+    <div class="modal fade" id="enableDisableModal{{$insumosCompras->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{$insumosCompras->id}}" aria-hidden="true">
+        <!-- Contenido del modal -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel{{$insumosCompras->id}}">Habilitar/Deshabilitar Insumo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea cambiar el estado del insumo?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <form action="{{ route('habilitarDeshabilitar', $insumosCompras->id) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                    <!--@include('insumoscompras.info')-->
                     @endforeach
                 </tbody>
             </table>
