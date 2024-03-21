@@ -153,6 +153,7 @@
                                 <tr>
                                     <th>Insumo</th>
                                     <th>Cantidad</th>
+                                    <th>Merma</th>
                                     <th>U.Medida</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -162,6 +163,7 @@
                                     <tr>
                                         <td>{{ $insumoAgregado->insumo->nombre }}</td>
                                         <td>{{ $insumoAgregado->cantidad }}</td>
+                                        <td>{{ $insumoAgregado->merma }}</td>
                                         <td>{{ $insumoAgregado->unidadMedida->nombre }}</td>
                                         <td>
                                             <!-- Botón para abrir el modal de confirmación -->

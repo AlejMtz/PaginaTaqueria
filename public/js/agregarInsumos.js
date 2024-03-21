@@ -25,6 +25,11 @@ $(document).ready(function () {
                 </div>
 
                 <div class="mb-3">
+                    <label for="cantidad" class="form-label">Merma:</label>
+                    <input type="number" step="any" class="form-control" name="merma[]" aria-describedby="helpId" placeholder="" />
+                </div>
+
+                <div class="mb-3">
                     <label for="ID_UnidadMedida" class="form-label">Unidad Medida:</label>
                     <select name="ID_UnidadMedida[]" class="form-control">
                         ${unidadMedida.map(unidad => `<option value="${unidad.id}">${unidad.nombre}</option>`).join('')}

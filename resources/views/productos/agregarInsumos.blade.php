@@ -37,6 +37,10 @@
                 <label for="cantidad_{{ $index }}" class="form-label">Cantidad:</label>
                 <input type="number" step="any" class="form-control" name="cantidades[{{ $index }}]" id="cantidad_{{ $index }}" aria-describedby="helpId" placeholder="" />
 
+
+                <label for="cantidad_{{ $index }}" class="form-label">Merma:</label>
+                <input type="number" step="any" class="form-control" name="merma[{{ $index }}]" id="merma_{{ $index }}" aria-describedby="helpId" placeholder="" />
+
                 <label for="unidadMedida_{{ $index }}" class="form-label">Unidad Medida:</label>
                 <select name="ID_UnidadMedida[{{ $index }}]" id="unidadMedida_{{ $index }}" class="form-control">
                   @foreach($unidadMedida as $unidad)

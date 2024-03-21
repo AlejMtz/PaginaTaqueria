@@ -39,6 +39,7 @@ class InsumosProductosControlador extends Controller
         'ID_Producto' => 'required',
         'ID_Insumo' => 'required|array',
         'cantidad' => 'required|array',
+        'merma' => 'required|array',
         'ID_UnidadMedida' => 'required|array',
     ]);
 
@@ -46,6 +47,7 @@ class InsumosProductosControlador extends Controller
     $idProducto = $request->input('ID_Producto');
     $idInsumos = $request->input('ID_Insumo');
     $cantidades = $request->input('cantidad');
+    $merma = $request->input('merma');
     $idUnidadesMedida = $request->input('ID_UnidadMedida');
 
     // Obtener el valor de ID_Categoria a través del modelo Productos
@@ -56,6 +58,7 @@ class InsumosProductosControlador extends Controller
         InsumosProductos::create([
             'ID_Insumo' => $idInsumo,
             'cantidad' => $cantidades[$key],
+            'merma' => $merma[$key],
             'ID_UnidadMedida' => $idUnidadesMedida[$key],
             'ID_Producto' => $idProducto,
             'ID_Categoria' => $idCategoria,
@@ -75,6 +78,7 @@ class InsumosProductosControlador extends Controller
          // Validaciones de formulario
     $request->validate([
         'cantidad' => 'numeric|nullable',
+        'merma' => 'numeric|nullable',
         'insumo' => 'exists:insumos,id',
         'unidadMedida' => 'exists:unidadmedidas,id',
     ]);
@@ -86,6 +90,7 @@ class InsumosProductosControlador extends Controller
         // Actualiza los campos del insumo
         $insumo->update([
             'cantidad' => $request->input('cantidad'),
+            'merma' => $request->input('merma'),
             'ID_Insumo' => $request->input('insumo'),
             'ID_UnidadMedida' => $request->input('unidadMedida'),
         ]);
