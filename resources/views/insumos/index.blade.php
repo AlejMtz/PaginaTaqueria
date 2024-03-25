@@ -51,7 +51,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">DESCRIPCIÓN</th>
                             <th scope="col">UNIDAD DE MEDIDA</th>
@@ -62,7 +61,6 @@
                     <tbody>
                     @foreach($insumos as $insumos)
                         <tr>
-                            <td> {{$insumos->id}} </td>
                             <td> {{$insumos->nombre}} </td>
                             <td> {{$insumos->descripcion}} </td>
                             <td> {{$insumos->unidadMedida->nombre}} </td>

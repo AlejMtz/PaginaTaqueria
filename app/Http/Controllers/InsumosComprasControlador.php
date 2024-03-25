@@ -39,29 +39,30 @@ class InsumosComprasControlador extends Controller
         $compra = new Compras;
         $compra->fecha = Carbon::now();
         $compra->save();
-
-        $insumosCompras = new InsumosCompras;
-        $insumosCompras->cantidad = $request->input('cantidad');
-        $insumosCompras->ID_Insumo = $request->input('ID_Insumo');
-        $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida');
-        $insumosCompras->ID_Compra = $compra->id;
-
-        if ($request->filled('costoT') && $request->filled('cantidad')) {
-            $costoTotal = $request->input('costoT');
-            $cantidad = $request->input('cantidad');
-            $costoUnitario = $costoTotal / $cantidad;
-            $insumosCompras->costo = $costoUnitario;
-        } else {
-            $insumosCompras->costo = $request->input('costo');
+    
+        foreach ($request->input('ID_Insumo') as $key => $idInsumo) {
+            $insumosCompras = new InsumosCompras;
+            $insumosCompras->cantidad = $request->input('cantidad')[$key];
+            $insumosCompras->ID_Insumo = $idInsumo;
+            $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida')[$key];
+            $insumosCompras->ID_Compra = $compra->id;
+    
+            if ($request->filled('costoT') && $request->filled('cantidad')[$key]) {
+                $costoTotal = $request->input('costoT')[$key];
+                $cantidad = $request->input('cantidad')[$key];
+                $costoUnitario = $costoTotal / $cantidad;
+                $insumosCompras->costo = $costoUnitario;
+            } else {
+                $insumosCompras->costo = $request->input('costo')[$key];
+            }
+    
+            $insumosCompras->save();
+    
+            $insumoComprado = Insumos::find($idInsumo);
+            $insumoComprado->estado = 'Deshabilitado'; 
+            $insumoComprado->save();
         }
-
-        $insumosCompras->save();
-
-        // Deshabilitar el insumo comprado
-        $insumoComprado = Insumos::find($request->input('ID_Insumo'));
-        $insumoComprado->estado = 'Deshabilitado'; 
-        $insumoComprado->save();
-
+    
         return redirect()->back();
     }
 
@@ -117,12 +118,4 @@ class InsumosComprasControlador extends Controller
         return redirect()->back();
     }
 
-    public function habilitarDeshabilitar($id)
-{
-    $insumoCompra = InsumosCompras::find($id);
-    $insumoCompra->Insumos->estado = ($insumoCompra->Insumos->estado == 'Habilitado') ? 'Deshabilitado' : 'Habilitado';
-    $insumoCompra->Insumos->save();
-
-    return redirect()->back();
-}
 }

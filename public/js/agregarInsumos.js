@@ -21,12 +21,12 @@ $(document).ready(function () {
 
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Cantidad:</label>
-                    <input type="number" step="any" class="form-control" name="cantidad[]" aria-describedby="helpId" placeholder="" />
+                    <input type="number" step="any" class="form-control" name="cantidad[]" aria-describedby="helpId" placeholder="" min="0" required />
                 </div>
 
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Merma:</label>
-                    <input type="number" step="any" class="form-control" name="merma[]" aria-describedby="helpId" placeholder="" />
+                    <input type="number" step="any" class="form-control" name="merma[]" aria-describedby="helpId" placeholder="" min="0" required/>
                 </div>
 
                 <div class="mb-3">

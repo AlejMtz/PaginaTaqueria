@@ -238,10 +238,7 @@
     @csrf 
     @method('PUT')
     <!-- Campos de edición -->
-    <div class="form-group">
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" step="any" class="form-control" id="cantidad" name="cantidad" value="{{ $insumoAgregado->cantidad }}">
-    </div>
+    
     <div class="form-group">
         <label for="insumo">Insumo:</label>
         <select class="form-control" id="insumo" name="insumo">
@@ -252,6 +249,17 @@
             @endforeach
         </select>
     </div>
+
+    <div class="form-group">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" step="any" class="form-control" id="cantidad" name="cantidad" value="{{ $insumoAgregado->cantidad }}" min="0" required>
+    </div>
+
+    <div class="form-group">
+        <label for="cantidad">Merma:</label>
+        <input type="number" step="any" class="form-control" id="merma" name="merma" value="{{ $insumoAgregado->merma }}" min="0" required>
+    </div>
+
     <div class="form-group">
         <label for="unidadMedida">Unidad de Medida:</label>
         <select class="form-control" id="unidadMedida" name="unidadMedida">

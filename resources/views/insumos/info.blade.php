@@ -16,12 +16,12 @@
       <div class="modal-body">
         <div class="mb-3">
             <label for="" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$insumos->nombre}}" />
+            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$insumos->nombre}}" required/>
         </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Descripción:</label>
-            <input type="text" class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId" placeholder="" value="{{$insumos->descripcion}}" />
+            <input type="text" class="form-control" name="descripcion" id="descripcion" aria-describedby="helpId" placeholder="" value="{{$insumos->descripcion}}" required/>
         </div>
 
         <div class="mb-3">

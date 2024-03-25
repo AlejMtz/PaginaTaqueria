@@ -42,6 +42,9 @@
         <label for="cantidad_{{ $insumoProducto->id }}" class="form-label">Cantidad:</label>
         <input type="number" step="any" class="form-control" name="cantidades[{{ $insumoProducto->id }}]" id="cantidad_{{ $insumoProducto->id }}" value="{{ $insumoProducto->cantidad }}" aria-describedby="helpId" placeholder="" />
         
+        <label for="merma_{{ $insumoProducto->id }}" class="form-label">Merma:</label>
+        <input type="number" step="any" class="form-control" name="merma[{{ $insumoProducto->id }}]" id="merma_{{ $insumoProducto->id }}" value="{{ $insumoProducto->merma }}" aria-describedby="helpId" placeholder="" />
+
         <!-- Nueva sección para la unidad de medida -->
         <label for="unidad_medida_{{ $insumoProducto->id }}" class="form-label">Unidad de Medida:</label>
         <select class="form-control" name="unidadesMedida[{{ $insumoProducto->id }}]">
