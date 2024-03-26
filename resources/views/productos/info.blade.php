@@ -16,12 +16,12 @@
       <div class="modal-body">
       <div class="mb-3">
             <label for="" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$productos->nombre}}"/>
+            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$productos->nombre}}" required/>
         </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Precio:</label>
-            <input type="text" class="form-control" name="precio" id="precio" aria-describedby="helpId" placeholder="" value="{{$productos->precio}}"/>
+            <input type="text" class="form-control" name="precio" id="precio" aria-describedby="helpId" placeholder="" value="{{$productos->precio}}" required/>
         </div>
 
         <div class="mb-3">

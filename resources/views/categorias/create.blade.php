@@ -21,7 +21,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{ old('nombre') }}"/>
+            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{ old('nombre') }}" required/>
         </div>
         
       </div>

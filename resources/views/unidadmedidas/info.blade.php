@@ -16,7 +16,7 @@
       <div class="modal-body">
         <div class="mb-3">
             <label for="" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$unidadMedidas->nombre}}" />
+            <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="" value="{{$unidadMedidas->nombre}}" required/>
         </div>
         
       </div>

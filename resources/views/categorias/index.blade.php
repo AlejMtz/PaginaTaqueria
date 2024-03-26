@@ -28,7 +28,7 @@
         </div>
     </div>
     
-    <div class="col-md-9">
+    <div class="col-md-10">
 
     <br><br>
     <h3>ADMINISTRA TUS CATEGORIAS</h3>
