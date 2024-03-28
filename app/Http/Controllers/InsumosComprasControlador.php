@@ -36,34 +36,47 @@ class InsumosComprasControlador extends Controller
      */
     public function store(Request $request)
     {
+        Carbon::setLocale('es');
+
         $compra = new Compras;
-        $compra->fecha = Carbon::now();
+        $compra->fecha = Carbon::now('America/Mexico_City')->format('Y-m-d H:i:s');
         $compra->save();
-    
-        foreach ($request->input('ID_Insumo') as $key => $idInsumo) {
-            $insumosCompras = new InsumosCompras;
-            $insumosCompras->cantidad = $request->input('cantidad')[$key];
-            $insumosCompras->ID_Insumo = $idInsumo;
-            $insumosCompras->ID_UnidadMedida = $request->input('ID_UnidadMedida')[$key];
-            $insumosCompras->ID_Compra = $compra->id;
-    
-            if ($request->filled('costoT') && $request->filled('cantidad')[$key]) {
-                $costoTotal = $request->input('costoT')[$key];
-                $cantidad = $request->input('cantidad')[$key];
-                $costoUnitario = $costoTotal / $cantidad;
-                $insumosCompras->costo = $costoUnitario;
-            } else {
-                $insumosCompras->costo = $request->input('costo')[$key];
-            }
-    
-            $insumosCompras->save();
-    
-            $insumoComprado = Insumos::find($idInsumo);
-            $insumoComprado->estado = 'Deshabilitado'; 
-            $insumoComprado->save();
+
+        // Obtener los valores individuales del formulario
+        $idInsumo = $request->input('ID_Insumo');
+        $cantidad = $request->input('cantidad');
+        $idUnidadMedida = $request->input('ID_UnidadMedida');
+        $costo = $request->input('costo');
+        $costoT = $request->input('costoT');
+
+        // Crear una nueva instancia de InsumosCompras
+        $insumosCompras = new InsumosCompras;
+
+        // Asignar los valores al objeto
+        $insumosCompras->cantidad = $cantidad;
+        $insumosCompras->ID_Insumo = $idInsumo;
+        $insumosCompras->ID_UnidadMedida = $idUnidadMedida;
+        $insumosCompras->ID_Compra = $compra->id;
+
+        // Calcular el costo unitario
+        if ($request->filled('costoT') && $cantidad > 0) {
+            $costoTotal = $costoT;
+            $costoUnitario = $costoTotal / $cantidad;
+            $insumosCompras->costo = $costoUnitario;
+        } else {
+            $insumosCompras->costo = $costo;
         }
-    
+
+        // Guardar el registro en la base de datos
+        $insumosCompras->save();
+
+        // Actualizar el estado del insumo a 'Deshabilitado'
+        $insumoComprado = Insumos::find($idInsumo);
+        $insumoComprado->estado = 'Deshabilitado'; 
+        $insumoComprado->save();
+
         return redirect()->back();
+
     }
 
     /**

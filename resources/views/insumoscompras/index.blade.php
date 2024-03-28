@@ -1,6 +1,5 @@
 @extends('layouts/homeInsumosCompras')
 
-
 @section('content')
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -40,7 +39,7 @@
         </a>
 
         <!-- Boton para agregar -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create" data-insumos="{{ $insumos }}" data-unidadmedidas="{{ $unidadMedidas }}">
             AGREGAR COMPRA
         </button>
         <br><br>
@@ -61,36 +60,25 @@
                 </thead>
                 <!-- Cuerpo de la tabla -->
                 <tbody>
-                    @foreach($insumosCompras as $insumosCompras)
+                    @foreach($insumosCompras as $insumoCompra)
                     <tr>
-                        <td>{{ $insumosCompras->Insumos->nombre }}</td>
-                        <td>{{ $insumosCompras->UnidadMedidas->nombre }}</td>
-                        <td>{{ $insumosCompras->cantidad }}</td>
-                        <td>{{ $insumosCompras->costo }}</td>
-                        <td>{{ number_format($insumosCompras->costo * $insumosCompras->cantidad, 2) }}</td>
-                        <td>{{ $insumosCompras->Compras->fecha }}</td>
+                        <td>{{ $insumoCompra->Insumos->nombre }}</td>
+                        <td>{{ $insumoCompra->UnidadMedidas->nombre }}</td>
+                        <td>{{ $insumoCompra->cantidad }}</td>
+                        <td>{{ $insumoCompra->costo }}</td>
+                        <td>{{ number_format($insumoCompra->costo * $insumoCompra->cantidad, 2) }}</td>
+                        <td>{{ $insumoCompra->Compras->fecha }}</td>
                         <td>
-
-           <!--             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#enableDisableModal{{$insumosCompras->id}}">
-                            Habilitar/Deshabilitar
-                        </button>
-                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $insumosCompras->id }}">
-                                EDITAR
-                            </button>
-                            
-                             <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#delete{{ $insumosCompras->id }}">
-                                ELIMINAR
-                            </button>
-                            -->
+                            <!-- Botones de acciones -->
                         </td>
                     </tr>
                     <!-- Modal para habilitar/deshabilitar -->
-    <div class="modal fade" id="enableDisableModal{{$insumosCompras->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{$insumosCompras->id}}" aria-hidden="true">
+    <div class="modal fade" id="enableDisableModal{{$insumoCompra->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{$insumoCompra->id}}" aria-hidden="true">
         <!-- Contenido del modal -->
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel{{$insumosCompras->id}}">Habilitar/Deshabilitar Insumo</h5>
+                    <h5 class="modal-title" id="exampleModalLabel{{$insumoCompra->id}}">Habilitar/Deshabilitar Insumo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -100,7 +88,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <form action="{{ route('habilitarDeshabilitar', $insumosCompras->id) }}" method="post">
+                    <form action="{{ route('habilitarDeshabilitar', $insumoCompra->id) }}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-primary">Confirmar</button>
                     </form>
