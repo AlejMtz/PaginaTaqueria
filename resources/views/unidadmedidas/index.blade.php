@@ -20,7 +20,8 @@
             <a href="{{ url('homeMenu') }}"><i class="fa fa-home"></i> Inicio</a>
             <a href="{{ url('homeInsumosCompras') }}"><i class="fa fa-shopping-cart"></i> Compras</a>
             <a href="{{ url('homeInventario') }}"><i class="fa fa-list-alt"></i> Inventario</a>
-            <a href="{{ url('homeVentas') }}"><i class="fa fa-dollar"></i> Ventas</a>
+            <a href="{{ url('homeOrden') }}"><i class="fa fa-dollar"></i> Ordenes</a>
+            <a href="{{ url('homeVenta') }}"><i class="fa fa-dollar"></i> Ventas</a>
             <a href="{{ url('home') }}"><i class="fa fa-archive"></i> Insumos</a>
             <a href="{{ url('homeProductos') }}"><i class="fa fa-cubes"></i> Productos</a>
             <a href="{{ url('homeCategorias') }}"><i class="fa fa-tags"></i> Categorías</a>
