@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ventas;
+use App\Models\Venta;
+use App\Models\VentaProducto;
 use Illuminate\Http\Request;
 
-class VentasControlador extends Controller
+class VentaControlador extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('../ventas.index');
+        $ventaproductos = VentaProducto::all();
+        $ventas = Venta::all();
+        return view('ventas.index',compact('ventas','ventaproductos'));
+        //
     }
 
     /**
@@ -34,7 +38,7 @@ class VentasControlador extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ventas $ventas)
+    public function show(Venta $venta)
     {
         //
     }
@@ -42,7 +46,7 @@ class VentasControlador extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ventas $ventas)
+    public function edit(Venta $venta)
     {
         //
     }
@@ -50,7 +54,7 @@ class VentasControlador extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ventas $ventas)
+    public function update(Request $request, Venta $venta)
     {
         //
     }
@@ -58,7 +62,7 @@ class VentasControlador extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ventas $ventas)
+    public function destroy(Venta $venta)
     {
         //
     }
